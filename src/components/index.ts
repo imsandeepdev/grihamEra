@@ -4,6 +4,7 @@ import {RoomCard} from './RoomCard';
 import {WeatherCard} from './WeatherCard';
 import {CustomTitle} from './CustomTitle';
 import {CheckedDevice} from './CheckedDevice';
+import {AppHeader} from './AppHeader';
 
 export {
   AppTextInput,
@@ -12,4 +13,5 @@ export {
   WeatherCard,
   CustomTitle,
   CheckedDevice,
+  AppHeader,
 };

@@ -66,60 +66,66 @@ const multipartRequest = ({url, needAuth, formData, hideLoader = false}) =>
       });
   });
 
-const multipostRequest = ({url, needAuth, data, hideLoader = false}) =>
-  new Promise((resolve, reject) => {
-    const headerWithoutAuth = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    };
-    const headers = headerWithoutAuth;
-    const requestUrl = Config.API_URL + url;
-    console.log('Request params ==> ', requestUrl);
-    console.log('forms data ==> ', data);
+// const multipostRequest = ({url, needAuth, data, hideLoader = false}) =>
+//   new Promise((resolve, reject) => {
+//     const headerWithoutAuth = {
+//       Accept: 'application/json',
+//       'Content-Type': 'application/json',
+//     };
+//     const headers = headerWithoutAuth;
+//     const requestUrl = Config.API_URL + url;
+//     console.log('Request params ==> ', requestUrl);
+//     console.log('forms data ==> ', data);
 
-    axios
-      .post(requestUrl, data, {headers})
-      .then(response => {
-        console.log('AXIOS RESPONSE ON API', response);
-        console.log('AXIOS RESPONSE ON API==>', response.status);
+//     axios
+//       .post(requestUrl, data, {headers})
+//       .then(response => {
+//         console.log('AXIOS RESPONSE ON API', response);
+//         console.log('AXIOS RESPONSE ON API==>', response.status);
 
-        if (response.status == '200') {
-          resolve(response);
-        } else {
-          reject(response);
-        }
-      })
-      .catch(error => {
-        reject(error);
-        console.log('errorr==>', error);
-        if (error == 'Network Error') {
-          console.log('Check Internet Connection');
-        } else {
-          console.log('error.message');
-        }
-      });
-  });
+//         if (response.status == '200') {
+//           resolve(response);
+//         } else {
+//           reject(response);
+//         }
+//       })
+//       .catch(error => {
+//         reject(error);
+//         console.log('errorr==>', error);
+//         if (error == 'Network Error') {
+//           console.log('Check Internet Connection');
+//         } else {
+//           console.log('error.message');
+//         }
+//       });
+//   });
 
-// const multipostRequest = async ({url, needAuth, data, hideLoader = false}) => {
-//   console.log('Hello Bro Sandeep');
-//   const headerWithoutAuth = {
-//     Accept: 'application/json',
-//     'content-Type': 'application/json',
-//   };
-//   const headers = headerWithoutAuth;
-//   const requestUrl = Config.API_URL + url;
-//   console.log('Request params ==> ', requestUrl);
-//   console.log('forms data ==> ', data);
+const multipostRequest = async ({url, needAuth, data, hideLoader = false}) => {
+  console.log('Hello Bro Sandeep');
+  const headerWithoutAuth = {
+    Accept: 'application/x-www-form-urlencoded',
+    'content-Type': 'application/x-www-form-urlencoded',
+    Authentication:
+      'x-agent-apay:agentanshPay eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1yczI1NiIsInR5cCI6IkpXVCJ9',
+  };
+  const dataList = {
+    mobileOrEmail: '9918393240',
+    password: '123456',
+  };
+  const headers = headerWithoutAuth;
+  const requestUrl = 'https://anshpe.com/agent/api/v1/agent_login';
+  console.log('Request params ==> ', requestUrl);
+  console.log('forms data ==> ', data);
 
-//   axios
-//     .post(requestUrl, data, {headers})
-//     .then(response => {
-//       console.log('Rsssfjsjfdsfd=>', response);
-//     })
-//     .catch(err => {
-//       console.log('erorr=>', err);
-//     });
-// };
+  axios
+    .post(requestUrl, dataList, {headers})
+    .then(response => {
+      console.log('Responseoooo=>', response);
+    })
+    .catch(err => {
+      console.log('erorr=>', err);
+    });
+};
 
 export default {
   multipartRequest,

@@ -62,8 +62,8 @@ const Login = ({navigation}) => {
             <View style={Styles.buttonContainer}>
               <AppButton
                 onPress={() => {
-                  handalLogin();
-                  // navigation.navigate('HomeScreen');
+                  // handalLogin();
+                  navigation.navigate('HomeScreen');
                 }}
                 title={'Login'}
               />

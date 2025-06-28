@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {Styles} from './styles';
 import {Colors} from '../../assets';
-import {CheckedDevice} from '../../components';
+import {AppHeader, CheckedDevice} from '../../components';
 
 const DeviceList = [
   {
@@ -18,14 +18,14 @@ const DeviceList = [
     title: ' Light',
     url: 'https://cdn-icons-png.flaticon.com/128/12332/12332484.png',
     activeUrl: 'https://cdn-icons-png.flaticon.com/128/3606/3606860.png',
-    selected: false,
+    selected: true,
   },
   {
     id: 2,
     title: ' Air Condition',
     url: 'https://cdn-icons-png.flaticon.com/128/10656/10656775.png',
     activeUrl: 'https://cdn-icons-png.flaticon.com/128/911/911409.png',
-    selected: true,
+    selected: false,
   },
 
   {
@@ -37,7 +37,7 @@ const DeviceList = [
   },
 ];
 
-const RoomDetail = () => {
+const RoomDetail = ({navigation}) => {
   const [deviceList, setDeviceList] = useState(DeviceList);
   const [selectedDevice, setSelectedDevice] = useState(DeviceList[0]);
   const [switchOn, setSwitchOn] = useState(false);
@@ -58,6 +58,12 @@ const RoomDetail = () => {
   return (
     <View style={Styles.mainContainer}>
       <SafeAreaView style={Styles.mainContainer}>
+        <View>
+          <AppHeader
+            onPress={() => navigation.goBack()}
+            title={'Room Details'}
+          />
+        </View>
         <View style={Styles.mainContainer}>
           <View style={Styles.topRowDivider}>
             <View style={{flex: 1}}>

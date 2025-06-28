@@ -88,6 +88,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('GRIHAMERA.keystore')
+            storePassword 'GRIHAMERA#333'
+            keyAlias 'GRIHAMERA#333'
+            keyPassword 'GRIHAMERA#333'
+        }
     }
     buildTypes {
         debug {
